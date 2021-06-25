@@ -14,16 +14,19 @@ docker run -it busybox:1.33.1
     exit
 docker run -it busybox:1.33.1
     ls
+docker rm $(docker ps -a -q)
 
 ### Deep Dive
-docker run -d busybox:1.33.1 sleep 1000
 docker ps
 docker ps -a
+docker run -d busybox:1.33.1 sleep 1000
+docker stop container_id
+docker rm container_id
 docker run --rm busybox:1.33.1 sleep 1
 docker ps -a
 docker run --name hello_world busybox:1.33.1
 docker ps -a
-docker run -d busybox:1.33.1 sleep 100
+docker run -d --rm busybox:1.33.1 sleep 1000
 docker inspect container_id
 
 ### Port Mapping and Logs
@@ -53,17 +56,16 @@ docker run -it afonsobarrenha/debian:1.00
 ### Build Docker Images with Dockerfile
 touch Dockerfile
 nano Dockerfile
-    FROM debian:jessian
+    FROM debian:jessie
     RUN apt-get update 
-    RUN apt-get install -y git
-    RUN apt-get install -y vim
+    RUN apt-get install -y htop
 docker build -t afonsobarrenha/debian . 
 docker images 
 
 ### Dockerfile in Depth
 #### RUN
 nano Dockerfile
-    FROM debian:jessian
+    FROM debian:jessie
     RUN apt-get update && apt-get install -y \
         git \
         vim
@@ -124,7 +126,7 @@ docker-compose up
 docker-compose up -d
 docker-compose ps
 docker-compose logs -f
-docker-compose logs dockerapp -f
+docker-compose logs dockerapp
 docker-compose stop
 docker-compose rm
 docker-compose build
