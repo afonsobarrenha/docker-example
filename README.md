@@ -67,28 +67,4 @@
     docker-compose stop container_id
     docker-compose rm container_id
     docker-compose build container_id
-
-### Docker Networking
-docker network ls
-docker run -d --net none busybox sleep 1000
-docker network inspect bridge
-docker network create --driver bridge my_bridge_network
-docker networkd connect bridge container_id
-docker networkd disconnect bridge container_id
-docker run -d --net host busybox sleep 1000
-
-### Create a Continuous Integration pipeline
-docker-compose up -d
-docker-compose run dockerapp python test.py
-
-### Running Docker in Production
-docker-machine create --driver digitalocean --digitalocean-access-token <xxxxx> docker-app-machine
-docker-machine create --driver digitalocean --digitalocean-access-token <xxxxx> swarm-manager
-docker-machine env swarm-manager
-docker-machine create --driver digitalocean --digitalocean-access-token <xxxxx> swarm-node
-docker-machine ls
-docker swarm init (in swarm-manager)
-docker swarm ssh swarm-node (in swarm-manager)
-    docker swarm join --token token_from_swarm_manager
-
-### Deploy Docker App in Docker Swarm
+    docker-compose run container_id comando
