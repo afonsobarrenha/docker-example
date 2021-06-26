@@ -16,7 +16,7 @@
         2. exit
     docker rmi image_id
 
-### Deep Dive
+### Basic Commands
     docker ps
     docker ps -a
     docker run -d busybox:1.33.1 sleep 1000
@@ -48,7 +48,6 @@
         CMD ["htop"]
     docker build -t afonsobarrenha/debian:1.1.0 . 
 
-
     touch file.txt
     nano Dockerfile
         FROM debian:jessie
@@ -59,7 +58,7 @@
 
     docker exec -it container_id comando
 
-### Docker Compose
+### Running Containers with Docker-Compose
     docker-compose up
     docker-compose up -d
     docker-compose ps
