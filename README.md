@@ -3,18 +3,18 @@
 ## Commands
 
 ### Hello World
-docker images
-docker run busybox:1.33.1 echo "hello world"
-docker images
-docker run busybox:1.33.1 ls /
-docker run -it busybox:1.33.1
-    ls
-    touch a.txt
-    ls
-    exit
-docker run -it busybox:1.33.1
-    ls
-docker rm $(docker ps -a -q)
+- docker images
+- docker run busybox:1.33.1 echo "hello world"
+- docker run busybox:1.33.1 ls /
+- docker run -it busybox:1.33.1
+    - ls
+    - touch a.txt
+    - ls
+    - exit
+- docker run -it busybox:1.33.1
+    - ls
+- docker rm container_id
+- docker rm $(docker ps -a -q)
 
 ### Deep Dive
 docker ps
