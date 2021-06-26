@@ -27,37 +27,19 @@
     docker run --rm busybox:1.33.1 sleep 10    
 
 ### Port Mapping and Logs
-docker run -it -p 8888:8080 tomcat:8.0
-docker ps -a
-docker run -it -d -p 8888:8080 tomcat:8.0
-docker logs container_id
-
-### Image Layers
-docker history busybox:1.33.1
-
-### Build Docker Images with commit
-docker run -it debian:jessie
-    ls
-    git
-    apt-get update && apt-ge install -y git
-        clear
-        git
-        exit
-"docker commit container_id repository_name:tag"
-docker ps -a
-docker commit container_id afonsobarrenha/debian:1.00
-docker images
-docker run -it afonsobarrenha/debian:1.00
-    git
+    docker run -it -p 8888:8080 tomcat:8.0
+    docker run -it -d -p 8888:8080 tomcat:8.0
+    docker ps -a
+    docker logs container_id
 
 ### Build Docker Images with Dockerfile
-touch Dockerfile
-nano Dockerfile
-    FROM debian:jessie
-    RUN apt-get update 
-    RUN apt-get install -y htop
-docker build -t afonsobarrenha/debian . 
-docker images 
+    nano Dockerfile
+    > FROM debian:jessie
+    > RUN apt-get update 
+    > RUN apt-get install -y htop
+    docker build -t afonsobarrenha/debian . 
+    docker images 
+    docker run -it afonsobarrenha/debian
 
 ### Dockerfile in Depth
 #### RUN
