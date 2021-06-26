@@ -34,81 +34,39 @@
 
 ### Build Docker Images with Dockerfile
     nano Dockerfile
-    > FROM debian:jessie
-    > RUN apt-get update 
-    > RUN apt-get install -y htop
-    docker build -t afonsobarrenha/debian . 
+        FROM debian:jessie
+        RUN apt-get update 
+        RUN apt-get install -y htop
+    docker build -t afonsobarrenha/debian:1.0.0 . 
     docker images 
-    docker run -it afonsobarrenha/debian
+    docker run -it afonsobarrenha/debian:1.0.0
 
-### Dockerfile in Depth
-#### RUN
-nano Dockerfile
-    FROM debian:jessie
-    RUN apt-get update && apt-get install -y \
-        git \
-        vim
-docker build -t afonsobarrenha/debian .
+    nano Dockerfile
+        FROM debian:jessie
+        RUN apt-get update 
+        RUN apt-get install -y htop
+        CMD ["htop"]
+    docker build -t afonsobarrenha/debian:1.1.0 . 
 
-#### CMD
-nano Dockerfile
-    FROM debian:jessian
-    RUN apt-get update && apt-get install -y \
-        git \
-        vim
-    CMD ["echo", "hello world"]
-docker build -t afonsobarrenha/debian .
-docker run image_id
-docker run afonsobarrenha/debian echo "hello docker"
 
-#### Docker Cache
-docker build -t afonsobarrenha/debian . --no-cache=true
+    touch file.txt
+    nano Dockerfile
+        FROM debian:jessie
+        RUN apt-get update 
+        RUN apt-get install -y htop
+        COPY abc.txt /src/abc.txt
+    docker build -t afonsobarrenha/debian:1.2.0 . 
 
-#### COPY
-touch abc.txt
-nano Dockerfile
-    FROM debian:jessian
-    RUN apt-get update && apt-get install -y \
-        git \
-        vim
-    COPY abc.txt /src/abc.txt
-docker build -t afonsobarrenha/debian .
-docker run -it afonsobarrenha/debian
-    ls /src
-
-#### ADD
-
-### Push Images to Docker Hub
-docker images
-docker tag image_id afonsobarrenha/debian:1.01
-docker images
-docker login --username=afonsobarrenha
-docker push afonsobarrenha/debian:1.01
-
-### Containerize a Hello World Web Application
-git clone afonsobarrenha.git
-docker build -t dockerapp:0.1 .
-docker images
-docker run -d -p 5000:5000 dockerapp
-docker exec -it container_id bash 
-
-### Implement a simple Key-value lookup service
-
-### Docker Container Links
-docker inspect container_id | grep IP
+    docker exec -it container_id comando
 
 ### Docker Compose
-docker ps
-docker-compose up
-
-### Deep Dive Docker Compose
-docker-compose up -d
-docker-compose ps
-docker-compose logs -f
-docker-compose logs dockerapp
-docker-compose stop
-docker-compose rm
-docker-compose build
+    docker-compose up
+    docker-compose up -d
+    docker-compose ps
+    docker-compose logs container_id
+    docker-compose stop container_id
+    docker-compose rm container_id
+    docker-compose build container_id
 
 ### Docker Networking
 docker network ls
