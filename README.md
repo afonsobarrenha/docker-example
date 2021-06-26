@@ -7,27 +7,24 @@
     docker run busybox:1.33.1 echo "hello world"
     docker run busybox:1.33.1 ls /
     docker run -it busybox:1.33.1
-        ls
-        touch a.txt
-        ls
-        exit
+        1. ls
+        2. touch a.txt
+        3. ls
+        4. exit
     docker run -it busybox:1.33.1
-        ls
-    docker rm container_id
-    docker rm $(docker ps -a -q)
+        1. ls
+        2. exit
+    docker rmi image_id
 
 ### Deep Dive
-docker ps
-docker ps -a
-docker run -d busybox:1.33.1 sleep 1000
-docker stop container_id
-docker rm container_id
-docker run --rm busybox:1.33.1 sleep 1
-docker ps -a
-docker run --name hello_world busybox:1.33.1
-docker ps -a
-docker run -d --rm busybox:1.33.1 sleep 1000
-docker inspect container_id
+    docker ps
+    docker ps -a
+    docker run -d busybox:1.33.1 sleep 1000
+    docker inspect container_id
+    docker stop container_id
+    docker rm container_id
+    docker rm $(docker ps -a -q)
+    docker run --rm busybox:1.33.1 sleep 10    
 
 ### Port Mapping and Logs
 docker run -it -p 8888:8080 tomcat:8.0
