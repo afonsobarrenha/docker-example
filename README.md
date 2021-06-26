@@ -54,7 +54,7 @@
         FROM debian:jessie
         RUN apt-get update 
         RUN apt-get install -y htop
-        COPY abc.txt /src/abc.txt
+        COPY file.txt /src/file.txt
     docker build -t afonsobarrenha/debian:1.2.0 . 
 
     docker exec -it container_id comando
