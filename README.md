@@ -3,9 +3,9 @@
 ## Commands
 
 ### Hello World
-- docker images
-- docker run busybox:1.33.1 echo "hello world"
-- docker run busybox:1.33.1 ls /
+    docker images
+    docker run busybox:1.33.1 echo "hello world"
+    docker run busybox:1.33.1 ls /
 - docker run -it busybox:1.33.1
     - ls
     - touch a.txt
